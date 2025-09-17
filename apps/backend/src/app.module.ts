@@ -4,6 +4,10 @@ import { AppService } from './app.service';
 import { AppDataSource } from '@repo/dbschema';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MarketsModule } from './markets/markets.module';
+import { OrderbookModule } from './orderbook/orderbook.module';
+import { RedisModule } from './redis/redis.module';
+import { TradesModule } from './trades/trades.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -13,6 +17,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: false,
       autoLoadEntities: true,
     }),
+    MarketsModule,
+    OrderbookModule,
+    RedisModule,
+    TradesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
